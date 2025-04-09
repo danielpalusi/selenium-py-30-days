@@ -1,0 +1,6 @@
+pytest -v to provide detailed information during test execution in console
+pytest -s to display print statement(s) in console
+pytest -k to run test that match the provided expression (eg pytest -k "smoke")
+
+@pytest.mark.anyKeyword to mark the test
+pytest -m anyKeyword to run the test with mark
