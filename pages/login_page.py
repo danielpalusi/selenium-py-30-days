@@ -10,7 +10,7 @@ class LoginPage(BasePage):
     password_input = (By.ID, "password")
     login_button = (By.ID, "login-button")
 
-    def login(self,  username, password):
+    def login(self, username, password):
         """
         Perform login by fill username and password fields and click login button
 
