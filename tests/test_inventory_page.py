@@ -5,8 +5,8 @@ from pages.inventory_page import InventoryPage
 
 logger = create_logger(__name__)
 
-def test_inventory(driver):
-    logger.info("Starting inventory test 🚀🚀")
+def test_retrieve_inventory_product_name(driver):
+    logger.info("Starting inventory test - Retrieve product name 🚀🚀")
 
     login_page = LoginPage(driver)
     inventory_page = InventoryPage(driver)
@@ -19,8 +19,8 @@ def test_inventory(driver):
     login_page.login(username, password)
 
     result = inventory_page.get_item_title()
-    print(result)
 
-    logger.info("Inventory test is finished ⛳⛳")
+    assert len(result) > 0
 
+    logger.info("Inventory test - Retrieve product name finished ⛳⛳")
 
