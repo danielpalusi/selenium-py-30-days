@@ -1,21 +1,15 @@
 from pages.login_page import LoginPage
 import time
-from utils.config_parser import config
 from utils.logger import create_logger
 
 logger = create_logger(__name__)
 
-def test_login(driver):
+def test_login(driver, retrieve_config_data):
     logger.info("Starting login test 🚀🚀")
-    print(f"Logger name is: {__name__}")
 
     login_page = LoginPage(driver)
 
-    # return is dict, so we can easily access it
-    # dict like object in js
-    url = config['base_url']
-    username = config['username']
-    password = config['password']
+    url, username, password = retrieve_config_data
 
     login_page.go_to(url)
     login_page.login(username, password)
