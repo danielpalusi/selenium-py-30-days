@@ -2,7 +2,6 @@ from pages.cart_page import CartPage
 from pages.inventory_page import InventoryPage
 from pages.login_page import LoginPage
 from utils.logger import create_logger
-import time
 
 logger = create_logger(__name__)
 
@@ -22,4 +21,6 @@ def test_cart_page(driver, retrieve_config_data):
     inventory_page.redirect_to_cart_page()
 
     assert cart_page.check_product_on_cart(product_title)
+
+
 

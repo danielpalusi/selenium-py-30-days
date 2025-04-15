@@ -8,6 +8,7 @@ class CartPage(BasePage):
     # Locators
     product_name_text = (By.CLASS_NAME, "inventory_item_name")
     product_quantity = (By.CLASS_NAME, "cart_quantity")
+    checkout_button = (By.ID, "checkout")
 
     def check_product_on_cart(self, expected_product_name):
         """
@@ -19,9 +20,12 @@ class CartPage(BasePage):
             Boolean
         """
 
-        product_name_text = self.driver.find_element(*self.product_name_text).text
-        product_quantity_text = self.driver.find_element(*self.product_quantity).text
+        product_name_text = self.find(self.product_name_text).text
+        product_quantity_text = self.find(self.product_quantity).text
 
         print(product_quantity_text)
 
         return product_name_text == expected_product_name and int(product_quantity_text) >= 1
+
+    def click_checkout_button(self):
+        self.click(self.checkout_button)
