@@ -11,7 +11,7 @@ class InventoryPage(BasePage):
     product_element = (By.CLASS_NAME, "inventory_item")
     product_button = (By.CLASS_NAME, "btn_inventory ")
     cart_badge = (By.CLASS_NAME, "shopping_cart_badge")
-    cart_button = (By.CLASS_NAME, "shopping_cart_link")
+    cart_button = (By.ID, "shopping_cart_container")
 
     def get_item_title(self):
         """
@@ -63,5 +63,5 @@ class InventoryPage(BasePage):
 
             No return
         """
-        cart_button_element = self.driver.find_element(*self.cart_button)
-        cart_button_element.click()
+
+        self.click(self.cart_button)

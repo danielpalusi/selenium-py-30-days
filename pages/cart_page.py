@@ -9,16 +9,19 @@ class CartPage(BasePage):
     product_name_text = (By.CLASS_NAME, "inventory_item_name")
     product_quantity = (By.CLASS_NAME, "cart_quantity")
 
-    def check_product_on_cart(self):
+    def check_product_on_cart(self, expected_product_name):
         """
         Check product name and product quantity
 
         No parameter
 
         Return:
-            Product name and quantity (text)
+            Boolean
         """
-        product_name_element = self.driver.find_element(*self.product_name_text)
-        product_quantity = self.driver.find_element(*self.product_quantity)
 
-        return product_name_element.text, product_quantity.text
+        product_name_text = self.driver.find_element(*self.product_name_text).text
+        product_quantity_text = self.driver.find_element(*self.product_quantity).text
+
+        print(product_quantity_text)
+
+        return product_name_text == expected_product_name and int(product_quantity_text) >= 1

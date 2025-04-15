@@ -21,11 +21,5 @@ def test_cart_page(driver, retrieve_config_data):
 
     inventory_page.redirect_to_cart_page()
 
-    # Explicit wait is needed to this
-    time.sleep(3)
-
-    product_cart_title, product_cart_quantity = cart_page.check_product_on_cart()
-
-    assert product_cart_title == product_title
-    assert int(product_cart_quantity) >= 1
+    assert cart_page.check_product_on_cart(product_title)
 

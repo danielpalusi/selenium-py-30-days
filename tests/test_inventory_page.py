@@ -38,5 +38,3 @@ def test_add_product_to_chart(driver, retrieve_config_data):
     assert int(cart_badge_amount) > 0
 
     logger.info("Inventory test - Add product to chart finished ⛳⛳")
-
-
