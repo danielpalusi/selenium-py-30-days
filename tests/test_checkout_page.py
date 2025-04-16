@@ -1,12 +1,7 @@
-import time
-
 from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
-from utils.logger import create_logger
 from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
-
-logger = create_logger(__name__)
 
 def test_checkout_page(driver, retrieve_config_data):
     login_page = LoginPage(driver)

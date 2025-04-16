@@ -3,6 +3,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from utils.config_parser import config
+from utils.logger import create_logger
+
 
 @pytest.fixture
 def driver():
@@ -33,3 +35,17 @@ def retrieve_config_data():
     password = config['password']
 
     return url, username, password
+
+logger = create_logger(__name__)
+
+@pytest.hookimpl()
+def pytest_runtest_protocol(item, nextitem):
+    logger.info(f"Starting test: {item.nodeid} 🚀🚀")
+
+    result = nextitem
+
+    logger.info(f"Test finished: {item.nodeid} ⛳⛳")
+
+    return result
+
+
