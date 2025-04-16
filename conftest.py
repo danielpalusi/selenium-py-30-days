@@ -4,6 +4,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from utils.config_parser import config
 from utils.logger import create_logger
+from utils.screenshot import take_screenshot
 
 
 @pytest.fixture
@@ -48,4 +49,17 @@ def pytest_runtest_protocol(item, nextitem):
 
     return result
 
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    # Before test execution
+    outcome = yield
 
+    # After test execution
+    report = outcome.get_result()
+
+    if call.when == 'call' and report.failed:
+        driver = item.funcargs.get('driver')
+        if driver:
+            print("below")
+            print(item.nodeid)
+            take_screenshot(driver, item.nodeid)
