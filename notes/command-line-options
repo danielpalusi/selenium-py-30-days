@@ -4,3 +4,17 @@ pytest -k to run test that match the provided expression (eg pytest -k "smoke")
 
 @pytest.mark.anyKeyword to mark the test
 pytest -m anyKeyword to run the test with mark
+
+yield on regular function is like return, it will return the value BUT other code below is executable using next method
+yield on pytest fixture is automatically run after the call process
+
+setup - call - teardown (py lifecycle)
+
+built in pytest hook
+pytest_addoption: Add custom command-line options.
+pytest_configure: Configure pytest globally (e.g., add markers or configure settings).
+pytest_sessionstart: Perform any session-level setup tasks before tests run.
+pytest_collect_file: Decide whether to collect a specific test file.
+pytest_collection_modifyitems: Modify or filter collected test items before they are run.
+
+pytest .\dir\test --browser=edge/chrome to run specific browser, default value is chrome
