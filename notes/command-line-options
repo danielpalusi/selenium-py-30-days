@@ -18,3 +18,5 @@ pytest_collect_file: Decide whether to collect a specific test file.
 pytest_collection_modifyitems: Modify or filter collected test items before they are run.
 
 pytest .\dir\test --browser=edge/chrome to run specific browser, default value is chrome
+
+pytest .\dir\test --html=reports/report.html to run and generate report
