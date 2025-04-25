@@ -20,3 +20,5 @@ pytest_collection_modifyitems: Modify or filter collected test items before they
 pytest .\dir\test --browser=edge/chrome to run specific browser, default value is chrome
 
 pytest .\dir\test --html=reports/report.html to run and generate report
+
+pytest .\dir\test --browser=edge/chrome --headless -v
