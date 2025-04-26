@@ -63,9 +63,10 @@ def browser_name(request):
     return request.config.getoption("--browser")
 
 @pytest.fixture
-def driver(browser_name):
+def driver(request, browser_name):
     # Setup
-    driver = create_driver(browser_name)
+    headless = request.config.getoption("--headless")
+    driver = create_driver(browser_name, headless)
 
     # Provide the driver to the test
     yield driver
