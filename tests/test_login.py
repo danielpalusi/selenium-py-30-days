@@ -3,6 +3,7 @@ import pytest
 from conftest import retrieve_config_data
 from pages.login_page import LoginPage
 from utils.logger import create_logger
+from utils.config_parser import config
 
 logger = create_logger(__name__)
 
@@ -46,11 +47,7 @@ def test_invalid_login(driver,retrieve_config_data):
 
     assert "inventory" not in driver.current_url
 
-@pytest.mark.parametrize("username, password", [
-    ("test", "test"),
-    ("another param", "another param"),
-    ("still another", "still another")
-])
+@pytest.mark.parametrize("username, password", [(user["username"], user["password"]) for user in config["invalid_users"]])
 def test_login_with_parametrized(driver, retrieve_config_data, username, password):
     login_page = LoginPage(driver)
     url, _, _ = retrieve_config_data

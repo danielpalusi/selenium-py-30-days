@@ -2,3 +2,10 @@ base_url: https://www.saucedemo.com
 browser: chrome
 username: standard_user
 password: secret_sauce
+invalid_users:
+  - username: test
+    password: test
+  - username: another param
+    password: another param
+  - username: still another
+    password: still another
