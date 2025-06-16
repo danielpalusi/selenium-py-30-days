@@ -1,3 +1,5 @@
+import pytest
+
 from pages.login_page import LoginPage
 import time
 
@@ -8,6 +10,7 @@ import time
 #     time.sleep(3)
 #     driver.quit()
 
+@pytest.mark.skip
 def test_screenshot(driver):
     """
     This is only playground to trigger the screenshot file
