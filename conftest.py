@@ -96,15 +96,15 @@ def retrieve_config_data():
 logger = create_logger(__name__)
 
 # built-in hook, this will be triggered before and after test
-@pytest.hookimpl()
+@pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_protocol(item, nextitem):
     logger.info(f"Starting test: {item.nodeid} 🚀🚀")
 
-    result = nextitem
+    outcome = yield
 
     logger.info(f"Test finished: {item.nodeid} ⛳⛳")
 
-    return result
+    return outcome
 
 # built-in hook, this will be triggered after test
 @pytest.hookimpl(hookwrapper=True)
@@ -118,6 +118,5 @@ def pytest_runtest_makereport(item, call):
     if call.when == 'call' and report.failed:
         driver = item.funcargs.get('driver')
         if driver:
-            print("below")
             print(item.nodeid)
             take_screenshot(driver, item.nodeid)
